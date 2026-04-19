@@ -2,6 +2,7 @@ package com.example.SpringBoot_REST_.APIs.controller;
 
 import com.example.SpringBoot_REST_.APIs.model.student;
 import com.example.SpringBoot_REST_.APIs.repository.student_repository_JPA;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -35,13 +36,13 @@ public class studentController {
 
     @PostMapping("/student/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void addStudent(@RequestBody student stu){
+    public void addStudent(@Valid @RequestBody student stu){
         studentRepositoryJpa.save(stu);
         System.out.println("Student Saved");
     }
 
     @PutMapping("/student/update/{id}")
-    public student updateStudent(@PathVariable Long id){
+    public student updateStudent(@Valid @PathVariable Long id){
 student student = studentRepositoryJpa.findById(id).orElseThrow(()-> new RuntimeException("Student Not Found"));
  student.setName("CarryMinati");
  student.setAge(29);

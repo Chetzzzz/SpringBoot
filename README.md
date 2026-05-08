@@ -1,2 +1,2 @@
-# SpringBoot REST APIs
+# SpringBoot
 
